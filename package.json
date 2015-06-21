@@ -1,5 +1,6 @@
 {
   "name": "express-it",
+  "homepage": "https://github.com/ded/express-it",
   "version": "1.0.0",
   "description": "serve custom translation variants for your Node.js Express app",
   "main": "index.js",
@@ -16,5 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ded/express-it.git"
   }
 }

@@ -37,6 +37,11 @@ You could do something like this (we’ll show you how to setup a user in a vari
   p!= t('welcome.fridge.msg', { name: user.first_name }).backup('Welcome {name}. Here is the fridge.')
 ```
 
+### A fully managed translation center
+This tool comes with an administration interface (integration required) allowing you to update message copy in real-time.
+
+![http://f.cl.ly/items/441U3r1Z1F1n3V3Q2u27/Screen%20Shot%202015-06-20%20at%2010.53.18%20PM.png](http://f.cl.ly/items/441U3r1Z1F1n3V3Q2u27/Screen%20Shot%202015-06-20%20at%2010.53.18%20PM.png)
+
 
 ### Integration
 

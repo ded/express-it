@@ -67,7 +67,8 @@ YOUR_APP.use(require('express-it').middleware({
 }))
 ```
 
- Usage in your templates (both server and client):
+### Usage
+Both client and server templates can take advantage of the `t()` function. The usage of the `backup()` method is *required* in all circumstances in cases where redis fails, or if a key is not found.
 
 ``` jade
 .welcome

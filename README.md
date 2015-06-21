@@ -38,7 +38,7 @@ You could do something like this (we’ll show you how to setup a user in a vari
 
  ``` javascript
 var client = require('redis').createClient()
-var VARIANTS = ['en.default', 'en.tech']
+var VARIANTS = ['en.default', 'en.tech', 'en.mellenials', 'en.fb_mom_campaign', 'en.pinterest_users']
 YOUR_APP.use('/path/to/translation-center', require('express-it').init({
   express: YOUR_EXPRESS,
   redis: client,

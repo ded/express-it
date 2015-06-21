@@ -94,6 +94,9 @@ see `tests/index.js`
 $ npm test
 ```
 
+### Contributions
+Yes please, and always welcome! Please consider the primary goals too. This is not intended to be a full `i18n` replacement. However performance improvements, bug fixes, and minor feature additions are fully welcomed!
+
 #### Licence MIT
 
-`express-it` is © 2015 Dustin Diaz and licensed under the MIT. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE file for more details.
+`express-it` is © 2015 Dustin Diaz and licensed under MIT. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE file for details.

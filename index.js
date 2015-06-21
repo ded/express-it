@@ -102,6 +102,7 @@ module.exports.middleware = function middleware(config) {
   })
 
   var loader = function (variant) {
+    variant = typeof variant === 'string') ? variant : variant[0]
     return {
       getLoader: function getLoader() {
         return '<script>window.E = ' + JSON.stringify(variants[variant]) + ';</script><script src="/express-it/index.js"></script>'
@@ -113,7 +114,7 @@ module.exports.middleware = function middleware(config) {
   function middle(req, res, next) {
     if (req.url === '/express-it/index.js') return handleStaticLoader(req, res)
     res.locals.E = loader(req.variant)
-    res.locals.t = branchTranslate.bind(null, variants[req.variant])
+    res.locals.t = branchTranslate.bind(null, req.variant)
     next()
   }
 
@@ -137,8 +138,17 @@ module.exports.middleware = function middleware(config) {
     }
   }
 
-  function branchTranslate(block, key, locals) {
-    return block[key] ? translate(block[key], locals) : defaultTranslate(key, locals)
+  function branchTranslate(variant, key, locals) {
+    if (typeof variant === 'string') {
+      var block = variants[variant]
+      return block[key] ? translate(block[key], locals) : defaultTranslate(key, locals)
+    } else if (variant.length) {
+      for (var i = 0; i < variant.length; i++) {
+        var block = variants[variant[i]]
+        if (block[key]) return translate(block[key], locals)
+      }
+    }
+    return defaultTranslate(key, locals)
   }
 
   function defaultTranslate(key, locals) {

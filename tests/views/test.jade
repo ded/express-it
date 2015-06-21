@@ -1,2 +1,4 @@
 != t('unfound.key').backup('example test message')
 != t('test.msg', { name: name }).backup('another example test message that wont be displayed')
+!= t('cascade.msg1', { name: name }).backup('xxx')
+!= t('cascade.msg2', { name: name }).backup('xxx')

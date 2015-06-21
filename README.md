@@ -1,6 +1,10 @@
 ## Express it
 Serve custom translation variants for your `Express 4.x` app.
 
+``` sh
+npm install express-it --save
+```
+
 Peer dependencies required
  - `express`: For translation center & middleware integration.
  - `redis`: For storing persistent translations in memory.
@@ -81,6 +85,13 @@ html
 <script>
   window.t('welcome.msg', { name: user.username }).backup('Welcome to Example.com')
 </script>
+```
+
+### Tests
+see `tests/index.js`
+
+``` sh
+npm test
 ```
 
 #### Licence MIT

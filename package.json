@@ -5,7 +5,7 @@
   "description": "serve custom translation variants for your Node.js Express app",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec tests"
   },
   "keywords": [
     "express",
@@ -21,5 +21,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ded/express-it.git"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
+    "redis": "^0.12.1",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
   }
 }

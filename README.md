@@ -93,6 +93,21 @@ html
 </script>
 ```
 
+### Cascading variations
+One great feature *ExpressIt* provides is the ability to cascade a user with multiple variations. For example one user might be part of both a Pinterest Campaign variant, and millenial (age group) variant. You can set your `req.variant` as such in your integrated middleware.
+
+``` js
+YOUR_APP.use(function (req, res, next) {
+  req.variant = ['en.pinterest_campaign', 'en.millenial', 'en.default']
+})
+```
+
+In the example above, you may have a translation key for `welcome.msg` in the `en.pinterest_campaign` variant.
+
+However in the absense of a translation for the `tutorial.step.1` translation key for `en.pinterest_campaign`, it will *cascade* to the next variant — which in this case is `en.millenial`.
+
+The advantage of this is that not every variant requires a translation for each key, allowing you to fallback onto other (perhaps more appropriate) messaging.
+
 ### Tests
 see `tests/index.js`
 

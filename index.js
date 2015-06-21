@@ -1,11 +1,12 @@
 var variants = {}
 var fs = require('fs')
 
-function reloadVariants(config) {
+function reloadVariants(config, optCb) {
   config.redis.mget(config.variants.map(function m(key) { return '_expt:' + key }), function cb(err, values) {
     values.forEach(function (val, i) {
       variants[config.variants[i]] = JSON.parse(val)
     })
+    optCb && optCb()
   })
 }
 
@@ -66,10 +67,11 @@ function create(req, res, next) {
     val = JSON.parse(val)
     val[req.body.key] = ''
     self.redis.set(key, JSON.stringify(val), function (err) {
-      res.json({
-        ok: err ? 0 : 1
+      reloadVariants(self, function () {
+        res.json({
+          ok: err ? 0 : 1
+        })
       })
-      reloadVariants(self)
     })
   })
 }
@@ -81,10 +83,11 @@ function update(req, res, next) {
     val = JSON.parse(val)
     val[req.body.data.key] = req.body.value
     self.redis.set(key, JSON.stringify(val), function (err) {
-      res.json({
-        ok: err ? 0 : 1
+      reloadVariants(self, function () {
+        res.json({
+          ok: err ? 0 : 1
+        })
       })
-      reloadVariants(self)
     })
   })
 }

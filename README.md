@@ -2,7 +2,7 @@
 Serve custom translation variants for your `Express 4.x` app.
 
 ``` sh
-npm install express-it --save
+$ npm install express-it --save
 ```
 
 Peer dependencies required
@@ -91,7 +91,7 @@ html
 see `tests/index.js`
 
 ``` sh
-npm test
+$ npm test
 ```
 
 #### Licence MIT

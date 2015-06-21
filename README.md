@@ -47,7 +47,7 @@ This tool comes with an administration interface (integration required) allowing
 
  ``` javascript
 var client = require('redis').createClient()
-var VARIANTS = ['en.default', 'en.tech', 'en.mellenials', 'en.fb_mom_campaign', 'en.pinterest_users']
+var VARIANTS = ['en.default', 'en.tech', 'en.millenials', 'en.fb_mom_campaign', 'en.pinterest_users']
 YOUR_APP.use('/path/to/translation-center', require('express-it').init({
   express: YOUR_EXPRESS,
   redis: client,

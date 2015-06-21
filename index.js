@@ -102,7 +102,7 @@ module.exports.middleware = function middleware(config) {
   })
 
   var loader = function (variant) {
-    variant = typeof variant === 'string') ? variant : variant[0]
+    variant = typeof variant === 'string' ? variant : variant[0]
     return {
       getLoader: function getLoader() {
         return '<script>window.E = ' + JSON.stringify(variants[variant]) + ';</script><script src="/express-it/index.js"></script>'

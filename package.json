@@ -23,12 +23,11 @@
     "url": "https://github.com/ded/express-it.git"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-as-promised": "^5.1.0",
+    "express": "^4.12.4",
+    "jade": "^1.11.0",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "redis": "^0.12.1",
-    "sinon": "^1.15.3",
-    "sinon-chai": "^2.8.0"
+    "supertest": "^1.0.1"
   }
 }

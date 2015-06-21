@@ -1,0 +1,20 @@
+{
+  "name": "express-it",
+  "version": "1.0.0",
+  "description": "serve custom translation variants for your Node.js Express app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "express",
+    "i18n",
+    "translation",
+    "variants"
+  ],
+  "author": "Dustin Diaz",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.1"
+  }
+}

@@ -82,3 +82,7 @@ html
   window.t('welcome.msg', { name: user.username }).backup('Welcome to Example.com')
 </script>
 ```
+
+#### Licence MIT
+
+`express-it` is © 2015 Dustin Diaz and licensed under the MIT. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE file for more details.

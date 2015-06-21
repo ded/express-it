@@ -99,6 +99,7 @@ One great feature *ExpressIt* provides is the ability to cascade a user with mul
 ``` js
 YOUR_APP.use(function (req, res, next) {
   req.variant = ['en.pinterest_campaign', 'en.millenial', 'en.default']
+  next()
 })
 ```
 

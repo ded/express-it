@@ -5,7 +5,8 @@
   "description": "serve custom translation variants for your Node.js Express app",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec tests"
+    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec tests",
+    "start": "node server"
   },
   "keywords": [
     "express",

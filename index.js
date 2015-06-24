@@ -37,6 +37,15 @@ module.exports.init = function (config) {
       limit: '10mb'
     }))
 
+  app.use(require('node-sass-middleware')({
+    debug: true,
+    src: __dirname + '/public',
+    dest: __dirname + '/public',
+    outputStyle: 'compressed',
+    indentedSyntax: true
+  }))
+
+  app.use(config.express.static(__dirname + '/public'))
   app.get('/', function (req, res) {
     config.redis.mget(config.variants.map(function i18nmap(key) { return '_expt:' + key }), function cb(err, values) {
       values = values.map(function map(val, i) {

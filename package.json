@@ -16,7 +16,8 @@
   "author": "Dustin Diaz",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.13.1"
+    "body-parser": "^1.13.1",
+    "node-sass-middleware": "^0.9.0"
   },
   "repository": {
     "type": "git",

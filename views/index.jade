@@ -2,117 +2,63 @@ doctype
 html
   head
     title ExpressIt Admin
-    style.
-
-      html { background: #eee; font-family: "Helvetica Neue", sans-serif;margin: 0 1rem; }
-      body { max-width: 800px; margin: 1rem auto; background: #fff; padding: 1rem;border-radius: 8px; position: relative; }
-      textarea { width: 100%; min-height: 3rem; padding: .25rem; border-radius: 4px; border: 1px solid #ccc;box-sizing: border-box; }
-      input[type="text"] { display: block; margin: .25rem 0; padding: .5rem; border-radius: 4px;border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
-
-      .btn {
-        display: inline-block;
-        margin-bottom: 0;
-        padding: .5rem 1rem;
-        border-radius: 4px;
-        border: none;
-        outline: 0;
-        text-decoration:none;
-        color: #fff;
-        background-color: #59ADEB;
-        text-align: center;
-        cursor: pointer;
-      }
-
-      .new-keys {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
-      .create-new-key {
-        opacity: 0;
-        position: absolute;
-        top: -50rem;
-        left: 1rem;
-        right: 1rem;
-        z-index: 1;
-        background: #fff;
-        padding: 1rem;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
-        transition: all .3s ease-in;
-      }
-      .manage {
-        position: relative;
-      }
-      .new-key-active .create-new-key {
-        transition: all .3s ease-in;
-        opacity: 1;
-        top: 1rem;
-      }
-      .close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: .5rem;
-        font-size: 1.6rem;
-        line-height: 1;
-        cursor: pointer;
-      }
-      input,textarea {
-        font-size: 1.1rem;
-      }
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    link(href='http://fonts.googleapis.com/css?family=Slabo+27px', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='/styles.css')
   body
-    h1 Translation Center
-    .new-keys
-      .btn.toggle-new-key Create new Key
-    .create-new-key
-      .close.toggle-new-key!= '&times;'
-      h2 Create new Translation
-      p: input.new-key-name(type='text', placeholder='new field key: eg, welcome.msg.home')
-      p: .btn.save-new-key Save
-    .manage
-      - allKeys = []
-      each key in keys
-        each val, index in key.value
-          if !~allKeys.indexOf(index)
-            - allKeys.push(index)
-            h2 #{index}
-            each variant in variants
-              p #{variant}
-              each item in keys
-                if item.variant == variant
-                  .group
-                    p: textarea(data-key=index, data-variant=variant)!= item.value[index]
-                    p: .btn.save-variant save
+
+    header
+      h1
+        | app.use(
+        svg(enable-background='new 0 0 30 30', height='30px', version='1.1', viewbox='0 0 30 30', width='30px', xml:space='preserve', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+          g
+            path(d='M24.417,2.854c0-1.547-1.268-2.813-2.813-2.813H2.854c-1.549,0-2.813,1.266-2.813,2.813v13.125   c0,1.548,1.264,2.813,2.813,2.813h0.938v-15h20.625V2.854z')
+            path(d='M26.908,6.719H9.769c-1.682,0-3.051,1.367-3.051,3.051v11.996c0,1.683,1.369,3.051,3.051,3.051h3.939l4.266,4.975   c0.092,0.106,0.225,0.168,0.364,0.168c0.141,0,0.273-0.063,0.364-0.168l4.262-4.975h3.943c1.682,0,3.051-1.368,3.051-3.051V9.77   C29.958,8.086,28.589,6.719,26.908,6.719z M25.875,20.562c0,1.091-0.888,1.979-1.979,1.979h-2.558l-2.764,3.226   c-0.059,0.069-0.145,0.109-0.236,0.109c-0.09,0-0.177-0.039-0.236-0.108l-2.767-3.227H12.78c-1.09,0-1.979-0.888-1.979-1.979V12.78   c0-1.091,0.888-1.979,1.979-1.979h11.116c1.09,0,1.979,0.888,1.979,1.979V20.562z')
+
+        |  ExpressIt Admin)
+      .create-new-key
+        .close.close-new-key!= '&times;'
+        h2 Create new Translation
+        p: input.new-key-name(type='text', placeholder='new field key: eg, welcome.msg.home')
+        p: .btn.save-new-key Save
+    .wrapper
+      .manage
+        - allKeys = []
+        each key in keys
+          each val, index in key.value
+            if !~allKeys.indexOf(index)
+              - allKeys.push(index)
+              .key
+                h2
+                  a(name=index, href='#' + index) #
+                  = ' ' + index + ' '
+                  i.fa.fa-trash.remove-key(data-key=index)
+                each variant in variants
+                  p #{variant}
+                  each item in keys
+                    if item.variant == variant
+                      .group
+                        p.split
+                          textarea(data-key=index, data-variant=variant)!= item.value[index]
+                          span.btn.save-variant save
+       if !allKeys.length
+        h2 You have no translation keys
+        p Create your first one!
+        .btn.show-create-key Create new Key
+    footer
+      .inner
+        p Built by <a href='https://github.com/ded'>Dustin Diaz</a>
+          = ' '
+          a(href='https://twitter.com/ded'): i.fa.fa-twitter
+        p Release v1.1.2 · <a href='https://github.com/ded/express-it'>GitHub</a> · <a href='https://github.com/ded/express-it/issues'>Issues</a>
+    .menu
+      i.fa.fa-th-list#menu-button(class=!allKeys.length ? 'broadcast' : undefined)
+      ul
+        li
+          .btn.toggle-new-key Create new Key
+        li.head Keys
+        each key in allKeys
+          li.item: a(href='#' + key)= key
+
     script(src='http://code.jquery.com/jquery-2.1.4.min.js')
-    script.
-      $('.toggle-new-key').on('click', function () {
-        $('body').toggleClass('new-key-active')
-      })
-
-      $('.save-new-key').on('click', function () {
-        $.ajax({
-          type: 'POST',
-          url: window.location.pathname + '/create',
-          data: { key: $('.new-key-name').val() },
-          success: function (resp) {
-            if (resp.ok) window.location.reload()
-          },
-          dataType: 'json'
-        })
-      })
-
-      $('.btn.save-variant').on('click', function () {
-        var $textarea = $(this).closest('.group').find('textarea')
-        var data = $textarea.data()
-        var value = $textarea.val()
-        $.ajax({
-          type: 'PUT',
-          url: window.location.pathname + '/update',
-          data: { data: data, value: value },
-          success: function (resp) {
-            if (resp.ok) window.location.reload()
-          },
-          dataType: 'json'
-        })
-      })
+    script(src='/app.js')

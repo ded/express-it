@@ -40,7 +40,7 @@ You could do something like this (we’ll show you how to setup a user in a vari
 ### A fully managed translation center
 This tool comes with an administration interface (integration required) allowing you to update message copy in real-time.
 
-![http://f.cl.ly/items/441U3r1Z1F1n3V3Q2u27/Screen%20Shot%202015-06-20%20at%2010.53.18%20PM.png](http://f.cl.ly/items/441U3r1Z1F1n3V3Q2u27/Screen%20Shot%202015-06-20%20at%2010.53.18%20PM.png)
+![http://f.cl.ly/items/1u263H1O3X0z3H2r2y3T/Screen%20Shot%202015-06-23%20at%205.42.42%20PM.png](http://f.cl.ly/items/1u263H1O3X0z3H2r2y3T/Screen%20Shot%202015-06-23%20at%205.42.42%20PM.png)
 
 
 ### Integration

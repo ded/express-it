@@ -57,9 +57,11 @@ module.exports.init = function (config) {
           value: {}
         }
       })
+      var pkg = require('./package.json')
       res.render('index', {
         variants: config.variants,
-        keys: values
+        keys: values,
+        version: pkg.version
       })
     })
   })

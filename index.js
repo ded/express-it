@@ -66,6 +66,7 @@ module.exports.init = function (config) {
 
   app.post('/create', create.bind(config))
   app.put('/update', update.bind(config))
+  app.delete('/remove', remove.bind(config))
   return app
 }
 
@@ -92,6 +93,34 @@ function update(req, res, next) {
     val = JSON.parse(val)
     val[req.body.data.key] = req.body.value
     self.redis.set(key, JSON.stringify(val), function (err) {
+      reloadVariants(self, function () {
+        res.json({
+          ok: err ? 0 : 1
+        })
+      })
+    })
+  })
+}
+
+function remove(req, res, next) {
+  var self = this
+  console.log('req', req.body)
+  var key = '_expt:' + req.body.key
+  self.redis.mget(self.variants.map(function (v) {
+    return '_expt:' + v
+  }),
+  function (err, values) {
+    values = values.map(function (val) {
+      val = JSON.parse(val)
+      delete val[req.body.key]
+      return val
+    })
+    var sets = []
+    for (var i = 0; i < self.variants.length; i++) {
+      sets.push('_expt:' + self.variants[i])
+      sets.push(JSON.stringify(values[i]))
+    }
+    self.redis.mset(sets, function (err) {
       reloadVariants(self, function () {
         res.json({
           ok: err ? 0 : 1

@@ -1,5 +1,6 @@
 var variants = {}
 var fs = require('fs')
+var request = require('request')
 
 function reloadVariants(config, optCb) {
   config.redis.mget(config.variants.map(function m(key) { return '_expt:' + key }), function cb(err, values) {
@@ -58,10 +59,17 @@ module.exports.init = function (config) {
         }
       })
       var pkg = require('./package.json')
-      res.render('index', {
-        variants: config.variants,
-        keys: values,
-        version: pkg.version
+      request.get({
+        url: 'https://raw.githubusercontent.com/ded/express-it/master/package.json',
+        type: 'json'
+      },
+      function (err, response, latest) {
+        res.render('index', {
+          variants: config.variants,
+          keys: values,
+          version: pkg.version,
+          latestVersion: latest ? latest.version : null
+        })
       })
     })
   })

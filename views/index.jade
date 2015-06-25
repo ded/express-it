@@ -51,6 +51,8 @@ html
           = ' '
           a(href='https://twitter.com/ded'): i.fa.fa-twitter
         p Release #{version} · <a href='https://github.com/ded/express-it'>GitHub</a> · <a href='https://github.com/ded/express-it/issues'>Issues</a>
+          if latestVersion && version !== latestVersion
+            span.latest.broadcast= ' · latest version is ' + latestVersion
     .menu
       i.fa.fa-th-list#menu-button(class=!allKeys.length ? 'broadcast' : undefined)
       ul

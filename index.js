@@ -114,8 +114,6 @@ function update(req, res, next) {
 
 function remove(req, res, next) {
   var self = this
-  console.log('req', req.body)
-  var key = '_expt:' + req.body.key
   self.redis.mget(self.variants.map(function (v) {
     return '_expt:' + v
   }),
@@ -189,7 +187,7 @@ module.exports.middleware = function middleware(config) {
   function branchTranslate(variant, key, locals) {
     if (typeof variant === 'string') {
       var block = variants[variant]
-      return block[key] ? translate(block[key], locals) : defaultTranslate(key, locals)
+      return block && block[key] ? translate(block[key], locals) : defaultTranslate(key, locals)
     } else if (variant.length) {
       for (var i = 0; i < variant.length; i++) {
         var block = variants[variant[i]]

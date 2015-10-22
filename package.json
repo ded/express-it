@@ -17,20 +17,20 @@
   "author": "Dustin Diaz",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.13.1",
-    "node-sass-middleware": "^0.9.0",
-    "request": "^2.58.0"
+    "body-parser": "^1.14.1",
+    "node-sass-middleware": "^0.9.7",
+    "request": "^2.65.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ded/express-it.git"
   },
   "devDependencies": {
-    "express": "^4.12.4",
+    "express": "^4.13.3",
     "jade": "^1.11.0",
     "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
-    "redis": "^0.12.1",
-    "supertest": "^1.0.1"
+    "mocha": "^2.3.3",
+    "redis": "^2.2.5",
+    "supertest": "^1.1.0"
   }
 }
